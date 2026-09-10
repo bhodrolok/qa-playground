@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pulse Clinic — Sign in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-card">
+    <h1 id="clinic-name">Pulse Clinic</h1>
+    <p class="muted" id="clinic-tagline">Care that keeps up with you</p>
+
+    <form id="login-form" novalidate>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="username" placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••">
+
+      <p id="login-error" class="error hidden"></p>
+      <button id="btn-login" type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+
+    <p class="muted">No account? <a id="link-register" href="register.html">Create one</a></p>
+
+    <details class="demo-accounts">
+      <summary>Demo accounts</summary>
+      <p>staff@clinic.com / Password123</p>
+      <p>patient@clinic.com / Password123</p>
+    </details>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

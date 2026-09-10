@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Message Templates</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Main navigation"></nav>
+    <div class="main">
+      <header id="topbar" class="topbar"></header>
+      <main class="content">
+        <h1>Message templates</h1>
+
+        <div class="toolbar">
+          <button class="btn btn-primary" id="btn-new-template">+ New template</button>
+        </div>
+
+        <section class="card hidden" id="template-form">
+          <h2 id="template-form-title">New template</h2>
+          <input type="hidden" id="tpl-id">
+          <div class="form-grid">
+            <div><label for="tpl-name">Name</label><input id="tpl-name"></div>
+            <div><label for="tpl-channel">Channel</label>
+              <select id="tpl-channel">
+                <option value="email">email</option>
+                <option value="sms">sms</option>
+              </select>
+            </div>
+            <div class="span-2"><label for="tpl-subject">Subject</label><input id="tpl-subject"></div>
+            <div class="span-2"><label for="tpl-body">Body</label>
+              <textarea id="tpl-body" rows="5" placeholder="Use {{patient_name}}, {{appointment_date}}, {{appointment_time}}, {{clinic_name}}"></textarea>
+            </div>
+          </div>
+
+          <div class="chips">
+            <button type="button" class="chip" data-var="patient_name">+ patient_name</button>
+            <button type="button" class="chip" data-var="appointment_date">+ appointment_date</button>
+            <button type="button" class="chip" data-var="appointment_time">+ appointment_time</button>
+            <button type="button" class="chip" data-var="clinic_name">+ clinic_name</button>
+          </div>
+
+          <h3>Preview</h3>
+          <div class="preview" id="tpl-preview"><em>Preview updates as you type…</em></div>
+
+          <p id="tpl-error" class="error hidden"></p>
+          <div class="actions">
+            <button class="btn btn-primary" id="btn-save-template">Save template</button>
+            <button class="btn btn-ghost" id="btn-close-template">Close</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <table class="table" id="tpl-table">
+            <thead><tr><th>ID</th><th>Name</th><th>Channel</th><th>Subject</th><th>Actions</th></tr></thead>
+            <tbody id="tpl-rows"><tr><td colspan="5" class="muted">Loading…</td></tr></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/staff-templates.js"></script>
+</body>
+</html>

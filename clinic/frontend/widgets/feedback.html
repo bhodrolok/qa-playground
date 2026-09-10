@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Feedback</title>
+  <style>body { margin:0; background:transparent; }</style>
+</head>
+<body>
+  <!-- This custom element renders ALL of its content inside an open Shadow DOM -->
+  <feedback-widget id="feedback-widget"></feedback-widget>
+
+  <script>
+    class FeedbackWidget extends HTMLElement {
+      connectedCallback() {
+        if (this.shadowRoot) return; // guard against re-connect
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.innerHTML = `
+          <style>
+            :host { font-family: system-ui, sans-serif; display:block; border:1px solid #ddd; border-radius:8px; padding:10px; }
+            label { display:block; font-size:12px; margin:6px 0 2px; color:#555; }
+            select, textarea { width:100%; padding:6px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font:inherit; }
+            textarea { min-height:50px; }
+            button { margin-top:8px; padding:6px 10px; background:#2563eb; color:#fff; border:0; border-radius:4px; cursor:pointer; }
+            #fb-result { margin-top:8px; font-size:13px; color:#15803d; min-height:1em; }
+          </style>
+          <strong>Rate your last visit</strong>
+          <label for="fb-rating">Rating (1&ndash;5)</label>
+          <select id="fb-rating">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5" selected>5</option>
+          </select>
+          <label for="fb-comment">Comments</label>
+          <textarea id="fb-comment" placeholder="Anything you'd like to share?"></textarea>
+          <button id="fb-submit" type="button">Submit feedback</button>
+          <div id="fb-result" role="status"></div>`;
+
+        const btn = shadow.getElementById('fb-submit');
+        btn.addEventListener('click', async () => {
+          const result = shadow.getElementById('fb-result');
+          result.textContent = 'Submitting…';
+          const payload = {
+            rating: parseInt(shadow.getElementById('fb-rating').value, 10),
+            comment: shadow.getElementById('fb-comment').value
+          };
+          try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/feedback', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                ...(token ? { Authorization: 'Bearer ' + token } : {})
+              },
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            result.textContent = res.ok
+              ? `Thanks! Feedback #${data.id} recorded.`
+              : 'Failed: ' + (data.error || res.status);
+          } catch (e) {
+            result.textContent = 'Network error.';
+          }
+        });
+      }
+    }
+    customElements.define('feedback-widget', FeedbackWidget);
+  </script>
+</body>
+</html>

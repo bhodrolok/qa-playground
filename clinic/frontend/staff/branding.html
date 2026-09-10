@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Branding &amp; Settings</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Main navigation"></nav>
+    <div class="main">
+      <header id="topbar" class="topbar"></header>
+      <main class="content">
+        <h1>Branding &amp; settings</h1>
+
+        <div class="two-col">
+          <section class="card">
+            <h2>General</h2>
+            <label for="brand-name">Clinic name</label>
+            <input id="brand-name">
+            <label for="brand-tagline">Tagline</label>
+            <input id="brand-tagline">
+            <label for="brand-color">Primary color (hex)</label>
+            <input id="brand-color" placeholder="#2563eb">
+            <div class="actions">
+              <button class="btn btn-primary" id="btn-save-branding">Save branding</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Logo</h2>
+            <div class="logo-box">
+              <img id="logo-preview" alt="Clinic logo preview" class="hidden">
+              <span id="logo-placeholder" class="muted">No logo uploaded</span>
+            </div>
+            <label for="logo-input">Choose image file</label>
+            <input type="file" id="logo-input">
+            <div class="actions">
+              <button class="btn" id="btn-upload-logo">Upload logo</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/staff-branding.js"></script>
+</body>
+</html>

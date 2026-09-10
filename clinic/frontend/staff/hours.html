@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Clinic Hours</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Main navigation"></nav>
+    <div class="main">
+      <header id="topbar" class="topbar"></header>
+      <main class="content">
+        <h1>Clinic hours</h1>
+        <section class="card">
+          <table class="table" id="hours-table">
+            <thead><tr><th>Day</th><th>Opens</th><th>Closes</th><th>Closed</th></tr></thead>
+            <tbody id="hours-body"><tr><td colspan="4" class="muted">Loading…</td></tr></tbody>
+          </table>
+          <div class="actions">
+            <button class="btn btn-primary" id="btn-save-hours">Save hours</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/staff-hours.js"></script>
+</body>
+</html>

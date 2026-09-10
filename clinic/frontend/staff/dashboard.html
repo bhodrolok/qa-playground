@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Main navigation"></nav>
+    <div class="main">
+      <header id="topbar" class="topbar"></header>
+      <main class="content">
+        <h1>Dashboard</h1>
+
+        <section class="stat-grid" id="stat-grid">
+          <div class="card stat"><h3>Upcoming appointments</h3><span class="stat-value skeleton" id="stat-upcoming"></span></div>
+          <div class="card stat"><h3>Confirmed today</h3><span class="stat-value skeleton" id="stat-today"></span></div>
+          <div class="card stat"><h3>Registered patients</h3><span class="stat-value skeleton" id="stat-patients"></span></div>
+          <div class="card stat"><h3>Cancelled (all time)</h3><span class="stat-value skeleton" id="stat-cancelled"></span></div>
+        </section>
+
+        <div class="two-col">
+          <section class="card">
+            <h2>Live metrics</h2>
+            <p class="muted small">Auto-refreshes every 8 seconds.</p>
+            <div class="live-row"><span>Patients in queue</span><strong id="live-queue" class="live-val">–</strong></div>
+            <div class="live-row"><span>Avg. wait (min)</span><strong id="live-wait" class="live-val">–</strong></div>
+            <div class="live-row"><span>Staff online</span><strong id="live-staff" class="live-val">–</strong></div>
+            <p class="muted small" id="live-updated">waiting for data…</p>
+          </section>
+          <section class="card">
+            <h2>Activity feed</h2>
+            <ul id="activity-feed" class="feed"><li class="muted">Loading…</li></ul>
+          </section>
+        </div>
+
+        <section class="card">
+          <h2>Recent appointments</h2>
+          <table class="table" id="recent-table">
+            <thead><tr><th>Patient</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+            <tbody id="recent-body"><tr><td colspan="4" class="muted">Loading…</td></tr></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/staff-dashboard.js"></script>
+</body>
+</html>
